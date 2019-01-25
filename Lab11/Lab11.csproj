@@ -46,14 +46,64 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerDetails.Designer.cs">
+      <DependentUpon>CustomerDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="NorthwindDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwindDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="NorthwindDataSet1.cs">
+      <DependentUpon>NorthwindDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="NorthwindDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwindDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="NorthwindDataSetCust.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwindDataSetCust.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="NorthwindDataSetCustomers.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwindDataSetCustomers.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="NorthwindDataSetCustomersAllData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwindDataSetCustomersAllData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="NorthwindDataSetOrders.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwindDataSetOrders.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="NorthwindDataSetOrdersD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwindDataSetOrdersD.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CustomerDetails.resx">
+      <DependentUpon>CustomerDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +113,83 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="NorthwindDataSet.xsc">
+      <DependentUpon>NorthwindDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="NorthwindDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NorthwindDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NorthwindDataSet.xss">
+      <DependentUpon>NorthwindDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="NorthwindDataSet1.xsc">
+      <DependentUpon>NorthwindDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="NorthwindDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NorthwindDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NorthwindDataSet1.xss">
+      <DependentUpon>NorthwindDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="NorthwindDataSetCust.xsc">
+      <DependentUpon>NorthwindDataSetCust.xsd</DependentUpon>
+    </None>
+    <None Include="NorthwindDataSetCust.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NorthwindDataSetCust.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NorthwindDataSetCust.xss">
+      <DependentUpon>NorthwindDataSetCust.xsd</DependentUpon>
+    </None>
+    <None Include="NorthwindDataSetCustomers.xsc">
+      <DependentUpon>NorthwindDataSetCustomers.xsd</DependentUpon>
+    </None>
+    <None Include="NorthwindDataSetCustomers.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NorthwindDataSetCustomers.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NorthwindDataSetCustomers.xss">
+      <DependentUpon>NorthwindDataSetCustomers.xsd</DependentUpon>
+    </None>
+    <None Include="NorthwindDataSetCustomersAllData.xsc">
+      <DependentUpon>NorthwindDataSetCustomersAllData.xsd</DependentUpon>
+    </None>
+    <None Include="NorthwindDataSetCustomersAllData.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NorthwindDataSetCustomersAllData.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NorthwindDataSetCustomersAllData.xss">
+      <DependentUpon>NorthwindDataSetCustomersAllData.xsd</DependentUpon>
+    </None>
+    <None Include="NorthwindDataSetOrders.xsc">
+      <DependentUpon>NorthwindDataSetOrders.xsd</DependentUpon>
+    </None>
+    <None Include="NorthwindDataSetOrders.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NorthwindDataSetOrders.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NorthwindDataSetOrders.xss">
+      <DependentUpon>NorthwindDataSetOrders.xsd</DependentUpon>
+    </None>
+    <None Include="NorthwindDataSetOrdersD.xsc">
+      <DependentUpon>NorthwindDataSetOrdersD.xsd</DependentUpon>
+    </None>
+    <None Include="NorthwindDataSetOrdersD.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NorthwindDataSetOrdersD.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NorthwindDataSetOrdersD.xss">
+      <DependentUpon>NorthwindDataSetOrdersD.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +202,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Northwind.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
