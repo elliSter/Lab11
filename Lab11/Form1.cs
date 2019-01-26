@@ -83,6 +83,7 @@ namespace Lab11
             ////string companyName= "SELECT * FROM Customers where CustomerID='" + company1 + "';";
             //string strSQL = "SELECT * FROM Orders where CustomerID='" + company1 + "';";
 
+
             string strSQL = "SELECT * FROM Orders where OrderID=10248";
             string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\Northwind.mdb;Persist Security Info=True";
             OleDbConnection connection = new OleDbConnection(connectionString);
@@ -124,6 +125,36 @@ namespace Lab11
         private void toolStripLabel1_Click(object sender, EventArgs e)
         {
             string countryFilter =toolStripTextBox1.Text;
+
+            string strSQL = "SELECT * FROM Customers where ShipCountry = '" + countryFilter + "'; ";
+            
+            string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\Northwind.mdb;Persist Security Info=True";
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand command = new OleDbCommand(strSQL, connection); 
+            connection.Open();
+            //OleDbDataReader reader = command.ExecuteReader();
+
+            try
+            {
+                using (OleDbDataAdapter adapter = new OleDbDataAdapter(strSQL, Properties.Settings.Default.NorthwindConnectionString))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dataGridView2.DataSource = dt;
+
+                    string data = string.Empty;
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
         }
 
         private void toolStripLabel2_Click(object sender, EventArgs e)
