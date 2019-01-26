@@ -13,7 +13,7 @@ namespace Lab11
 {
     public partial class Form1 : Form
     {
-        public static string company,company1;
+        public static string company,company1="WILMK";
         
         public Form1()
         {
@@ -31,7 +31,7 @@ namespace Lab11
             this.customersTableAdapter1.Fill(this.northwindDataSetCustomersAllData.Customers);
             // TODO: This line of code loads data into the 'northwindDataSetCustomers.Customers' table. You can move, or remove it, as needed.
             this.customersTableAdapter.Fill(this.northwindDataSetCustomers.Customers);
-
+            
             
                 string strSQL = "SELECT * FROM Customers";
                 string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\Northwind.mdb;Persist Security Info=True";
@@ -77,6 +77,11 @@ namespace Lab11
             
         }
 
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            company1 = dataGridView1.Rows[0].Cells[e.ColumnIndex].FormattedValue.ToString();
+        }
+
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             
@@ -84,16 +89,11 @@ namespace Lab11
             //string strSQL = "SELECT * FROM Orders where CustomerID='" + company1 + "';";
 
 
-            string strSQL = "SELECT * FROM Orders where OrderID=10248";
-            string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\Northwind.mdb;Persist Security Info=True";
-            OleDbConnection connection = new OleDbConnection(connectionString);
-            OleDbCommand command = new OleDbCommand(strSQL, connection);
-            connection.Open();
-            //OleDbDataReader reader = command.ExecuteReader();
+            string strSQL1 = "SELECT * FROM Customers where CompanyName='" + company1 + "';";
 
             try
             {
-                using (OleDbDataAdapter adapter = new OleDbDataAdapter(strSQL, Properties.Settings.Default.NorthwindConnectionString))
+                using (OleDbDataAdapter adapter = new OleDbDataAdapter(strSQL1, Properties.Settings.Default.NorthwindConnectionString))
                 {
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
@@ -126,13 +126,9 @@ namespace Lab11
         {
             string countryFilter =toolStripTextBox1.Text;
 
-            string strSQL = "SELECT * FROM Customers where ShipCountry = '" + countryFilter + "'; ";
+            string strSQL = "SELECT * FROM Customers where Country = '" + countryFilter + "'; ";
             
-            string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\Northwind.mdb;Persist Security Info=True";
-            OleDbConnection connection = new OleDbConnection(connectionString);
-            OleDbCommand command = new OleDbCommand(strSQL, connection); 
-            connection.Open();
-            //OleDbDataReader reader = command.ExecuteReader();
+            
 
             try
             {
@@ -141,7 +137,7 @@ namespace Lab11
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    dataGridView2.DataSource = dt;
+                    dataGridView1.DataSource = dt;
 
                     string data = string.Empty;
 
@@ -162,9 +158,6 @@ namespace Lab11
 
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            company1 = dataGridView1.Rows[0].Cells[e.ColumnIndex].FormattedValue.ToString();
-        }
+       
     }
 }
