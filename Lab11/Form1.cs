@@ -59,7 +59,12 @@ namespace Lab11
                     }
                 }
                 connection.Close();
-            
+
+            DataGridViewCheckBoxColumn CheckboxColumn = new DataGridViewCheckBoxColumn();
+            CheckBox chk = new CheckBox();
+            CheckboxColumn.HeaderText = "Delete";
+            CheckboxColumn.Width = 45;
+            dataGridView1.Columns.Add(CheckboxColumn);
 
 
         }
@@ -67,7 +72,7 @@ namespace Lab11
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             
-            company= dataGridView1.Rows[0].Cells[e.ColumnIndex].FormattedValue.ToString();
+            company= dataGridView1.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
             
             CustomerDetails customerDetailsForm = new CustomerDetails();
             customerDetailsForm.Show();
@@ -79,17 +84,17 @@ namespace Lab11
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            company1 = dataGridView1.Rows[0].Cells[e.ColumnIndex].FormattedValue.ToString();
+            int rowIndex= dataGridView1.CurrentCell.RowIndex;
+            company1 = dataGridView1.Rows[rowIndex].Cells[0].FormattedValue.ToString();
         }
 
+        //orders
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            
-            ////string companyName= "SELECT * FROM Customers where CustomerID='" + company1 + "';";
-            //string strSQL = "SELECT * FROM Orders where CustomerID='" + company1 + "';";
 
+            dataGridView2.Visible = true;
 
-            string strSQL1 = "SELECT * FROM Customers where CompanyName='" + company1 + "';";
+            string strSQL1 = "SELECT * FROM Orders where ShipName='" + company1 + "';";
 
             try
             {
@@ -111,7 +116,6 @@ namespace Lab11
                 MessageBox.Show(ex.Message);
             }
 
-            dataGridView2.Visible = true;
 
             foreach (DataGridViewRow row in dataGridView2.Rows)
             {
@@ -121,33 +125,112 @@ namespace Lab11
         }
 
         
-
+        //filtroXwras
         private void toolStripLabel1_Click(object sender, EventArgs e)
         {
             string countryFilter =toolStripTextBox1.Text;
 
-            string strSQL = "SELECT * FROM Customers where Country = '" + countryFilter + "'; ";
             
-            
-
-            try
+            if (!String.IsNullOrEmpty(toolStripTextBox1.Text))
             {
-                using (OleDbDataAdapter adapter = new OleDbDataAdapter(strSQL, Properties.Settings.Default.NorthwindConnectionString))
+                string strSQL = "SELECT * FROM Customers where Country = '" + countryFilter + "'; ";
+
+                try
                 {
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter(strSQL, Properties.Settings.Default.NorthwindConnectionString))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
 
-                    dataGridView1.DataSource = dt;
+                        dataGridView1.DataSource = dt;
 
-                    string data = string.Empty;
+                        string data = string.Empty;
 
+
+                    }
 
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
 
+                string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\Northwind.mdb;Persist Security Info=True";
+                OleDbConnection connection = new OleDbConnection(connectionString);
+                OleDbCommand command = new OleDbCommand(strSQL, connection);
+                connection.Open();
+                OleDbDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    for (int i = 0; i < dataGridView1.RowCount - 1; i++)
+                    {
+
+                        if (i % 2 == 0)
+                        {
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.White;
+                        }
+                        else if (i % 2 == 1)
+                        {
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+                        }
+
+
+                    }
+                }
+                connection.Close();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                string strSQL = "SELECT * FROM Customers ";
+
+                try
+                {
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter(strSQL, Properties.Settings.Default.NorthwindConnectionString))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        dataGridView1.DataSource = dt;
+
+                        string data = string.Empty;
+
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\Northwind.mdb;Persist Security Info=True";
+                OleDbConnection connection = new OleDbConnection(connectionString);
+                OleDbCommand command = new OleDbCommand(strSQL, connection);
+                connection.Open();
+                OleDbDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    for (int i = 0; i < dataGridView1.RowCount - 1; i++)
+                    {
+
+                        if (i % 2 == 0)
+                        {
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.White;
+                        }
+                        else if (i % 2 == 1)
+                        {
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+                        }
+                        
+
+                    }
+                }
+                connection.Close();
+
+
+                
             }
 
 
@@ -155,9 +238,28 @@ namespace Lab11
 
         private void toolStripLabel2_Click(object sender, EventArgs e)
         {
+            int rowIndex= dataGridView1.CurrentCell.RowIndex;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[2];
 
+                if (chk.Value == chk.FalseValue || chk.Value == null)
+                {
+
+                }
+                else
+                {
+                    chk.Value = chk.FalseValue;
+                    //cID= dataGridView1.Rows[rowIndex].Cells[3].FormattedValue.ToString();
+
+                    //dataGridView1.Rows[rowIndex].Visible = false;
+
+
+
+                }
+
+            }
+            dataGridView1.EndEdit();
         }
-
-       
     }
 }

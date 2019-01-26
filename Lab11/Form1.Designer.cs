@@ -33,24 +33,12 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.northwindDataSetCustomers = new Lab11.NorthwindDataSetCustomers();
-            this.orderDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.northwindDataSetOrdersD = new Lab11.NorthwindDataSetOrdersD();
-            this.customersTableAdapter = new Lab11.NorthwindDataSetCustomersTableAdapters.CustomersTableAdapter();
-            this.northwindDataSetCustomersAllData = new Lab11.NorthwindDataSetCustomersAllData();
-            this.customersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.customersTableAdapter1 = new Lab11.NorthwindDataSetCustomersAllDataTableAdapters.CustomersTableAdapter();
-            this.northwindDataSetOrders = new Lab11.NorthwindDataSetOrders();
-            this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ordersTableAdapter = new Lab11.NorthwindDataSetOrdersTableAdapters.OrdersTableAdapter();
-            this.order_DetailsTableAdapter = new Lab11.NorthwindDataSetOrdersDTableAdapters.Order_DetailsTableAdapter();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.orderIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,7 +54,18 @@
             this.ShipRegion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShipPostalCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShipCountry = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripButton();
+            this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.northwindDataSetOrders = new Lab11.NorthwindDataSetOrders();
+            this.orderDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.northwindDataSetOrdersD = new Lab11.NorthwindDataSetOrdersD();
+            this.customersTableAdapter = new Lab11.NorthwindDataSetCustomersTableAdapters.CustomersTableAdapter();
+            this.northwindDataSetCustomersAllData = new Lab11.NorthwindDataSetCustomersAllData();
+            this.customersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.customersTableAdapter1 = new Lab11.NorthwindDataSetCustomersAllDataTableAdapters.CustomersTableAdapter();
+            this.ordersTableAdapter = new Lab11.NorthwindDataSetOrdersTableAdapters.OrdersTableAdapter();
+            this.order_DetailsTableAdapter = new Lab11.NorthwindDataSetOrdersDTableAdapters.Order_DetailsTableAdapter();
+            this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -75,13 +74,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.northwindDataSetCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.northwindDataSetOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderDetailsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.northwindDataSetOrdersD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.northwindDataSetCustomersAllData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.northwindDataSetOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -111,6 +110,16 @@
             // 
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripLabel1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripLabel1.Image")));
+            this.toolStripLabel1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(41, 22);
+            this.toolStripLabel1.Text = "Filtrer";
+            this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
             // 
             // toolStripLabel2
             // 
@@ -142,8 +151,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.companyNameDataGridViewTextBoxColumn,
-            this.countryDataGridViewTextBoxColumn,
-            this.Delete});
+            this.countryDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.customersBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -152,25 +160,6 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
-            // 
-            // companyNameDataGridViewTextBoxColumn
-            // 
-            this.companyNameDataGridViewTextBoxColumn.DataPropertyName = "CompanyName";
-            this.companyNameDataGridViewTextBoxColumn.HeaderText = "CompanyName";
-            this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
-            this.companyNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // countryDataGridViewTextBoxColumn
-            // 
-            this.countryDataGridViewTextBoxColumn.DataPropertyName = "Country";
-            this.countryDataGridViewTextBoxColumn.HeaderText = "Country";
-            this.countryDataGridViewTextBoxColumn.Name = "countryDataGridViewTextBoxColumn";
-            this.countryDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Name = "Delete";
             // 
             // customersBindingSource
             // 
@@ -181,52 +170,6 @@
             // 
             this.northwindDataSetCustomers.DataSetName = "NorthwindDataSetCustomers";
             this.northwindDataSetCustomers.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // orderDetailsBindingSource
-            // 
-            this.orderDetailsBindingSource.DataMember = "Order Details";
-            this.orderDetailsBindingSource.DataSource = this.northwindDataSetOrdersD;
-            // 
-            // northwindDataSetOrdersD
-            // 
-            this.northwindDataSetOrdersD.DataSetName = "NorthwindDataSetOrdersD";
-            this.northwindDataSetOrdersD.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // customersTableAdapter
-            // 
-            this.customersTableAdapter.ClearBeforeFill = true;
-            // 
-            // northwindDataSetCustomersAllData
-            // 
-            this.northwindDataSetCustomersAllData.DataSetName = "NorthwindDataSetCustomersAllData";
-            this.northwindDataSetCustomersAllData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // customersBindingSource1
-            // 
-            this.customersBindingSource1.DataMember = "Customers";
-            this.customersBindingSource1.DataSource = this.northwindDataSetCustomersAllData;
-            // 
-            // customersTableAdapter1
-            // 
-            this.customersTableAdapter1.ClearBeforeFill = true;
-            // 
-            // northwindDataSetOrders
-            // 
-            this.northwindDataSetOrders.DataSetName = "NorthwindDataSetOrders";
-            this.northwindDataSetOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // ordersBindingSource
-            // 
-            this.ordersBindingSource.DataMember = "Orders";
-            this.ordersBindingSource.DataSource = this.northwindDataSetOrders;
-            // 
-            // ordersTableAdapter
-            // 
-            this.ordersTableAdapter.ClearBeforeFill = true;
-            // 
-            // order_DetailsTableAdapter
-            // 
-            this.order_DetailsTableAdapter.ClearBeforeFill = true;
             // 
             // dataGridView2
             // 
@@ -339,15 +282,65 @@
             this.ShipCountry.HeaderText = "ShipCountry";
             this.ShipCountry.Name = "ShipCountry";
             // 
-            // toolStripLabel1
+            // ordersBindingSource
             // 
-            this.toolStripLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripLabel1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripLabel1.Image")));
-            this.toolStripLabel1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(41, 22);
-            this.toolStripLabel1.Text = "Filtrer";
-            this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
+            this.ordersBindingSource.DataMember = "Orders";
+            this.ordersBindingSource.DataSource = this.northwindDataSetOrders;
+            // 
+            // northwindDataSetOrders
+            // 
+            this.northwindDataSetOrders.DataSetName = "NorthwindDataSetOrders";
+            this.northwindDataSetOrders.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // orderDetailsBindingSource
+            // 
+            this.orderDetailsBindingSource.DataMember = "Order Details";
+            this.orderDetailsBindingSource.DataSource = this.northwindDataSetOrdersD;
+            // 
+            // northwindDataSetOrdersD
+            // 
+            this.northwindDataSetOrdersD.DataSetName = "NorthwindDataSetOrdersD";
+            this.northwindDataSetOrdersD.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // customersTableAdapter
+            // 
+            this.customersTableAdapter.ClearBeforeFill = true;
+            // 
+            // northwindDataSetCustomersAllData
+            // 
+            this.northwindDataSetCustomersAllData.DataSetName = "NorthwindDataSetCustomersAllData";
+            this.northwindDataSetCustomersAllData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // customersBindingSource1
+            // 
+            this.customersBindingSource1.DataMember = "Customers";
+            this.customersBindingSource1.DataSource = this.northwindDataSetCustomersAllData;
+            // 
+            // customersTableAdapter1
+            // 
+            this.customersTableAdapter1.ClearBeforeFill = true;
+            // 
+            // ordersTableAdapter
+            // 
+            this.ordersTableAdapter.ClearBeforeFill = true;
+            // 
+            // order_DetailsTableAdapter
+            // 
+            this.order_DetailsTableAdapter.ClearBeforeFill = true;
+            // 
+            // companyNameDataGridViewTextBoxColumn
+            // 
+            this.companyNameDataGridViewTextBoxColumn.DataPropertyName = "CompanyName";
+            this.companyNameDataGridViewTextBoxColumn.HeaderText = "CompanyName";
+            this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
+            this.companyNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // countryDataGridViewTextBoxColumn
+            // 
+            this.countryDataGridViewTextBoxColumn.DataPropertyName = "Country";
+            this.countryDataGridViewTextBoxColumn.HeaderText = "Country";
+            this.countryDataGridViewTextBoxColumn.Name = "countryDataGridViewTextBoxColumn";
+            this.countryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Form1
             // 
@@ -369,13 +362,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.northwindDataSetCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.northwindDataSetOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderDetailsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.northwindDataSetOrdersD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.northwindDataSetCustomersAllData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.northwindDataSetOrders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -401,9 +394,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn companyNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn countryDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Delete;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerID;
@@ -420,6 +410,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ShipPostalCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShipCountry;
         private System.Windows.Forms.ToolStripButton toolStripLabel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn companyNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn countryDataGridViewTextBoxColumn;
     }
 }
 
