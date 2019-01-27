@@ -15,6 +15,7 @@ namespace Lab11
     {
         public static string company,company1="WILMK";
         
+        
         public Form1()
         {
             InitializeComponent();
@@ -238,28 +239,27 @@ namespace Lab11
 
         private void toolStripLabel2_Click(object sender, EventArgs e)
         {
-            int rowIndex= dataGridView1.CurrentCell.RowIndex;
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            try
             {
-                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[2];
-
-                if (chk.Value == chk.FalseValue || chk.Value == null)
+                foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
+                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[2];
 
-                }
-                else
-                {
-                    chk.Value = chk.FalseValue;
-                    //cID= dataGridView1.Rows[rowIndex].Cells[3].FormattedValue.ToString();
-
-                    //dataGridView1.Rows[rowIndex].Visible = false;
-
+                    if (chk.Value != null)
+                    {
+                        row.Visible = false;
+                    }
 
 
                 }
-
+                dataGridView1.EndEdit();
             }
-            dataGridView1.EndEdit();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
         }
     }
 }
